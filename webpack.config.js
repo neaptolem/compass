@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 
 module.exports = {
-  devtool: 'sourcemap',
+  devtool: 'inline-sourcemap',
   entry: {
     app: './src/main',
     vendor: './src/vendor'
@@ -14,11 +14,13 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.ts$/,
-      loader: 'ts'
+      loader: 'ts',
+      exclude: /node_modules/
     },
     {
       test: /\.html$/,
-      loader: 'html'
+      loader: 'html',
+      exclude: /node_modules/
     }]
   },
   resolve: {
@@ -26,6 +28,10 @@ module.exports = {
   },
   plugins: [
     new webpack.NoErrorsPlugin(),
-    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    }),
   ]
 };
