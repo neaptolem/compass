@@ -1,29 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone, ViewChild } from '@angular/core';
 import { InfoWindow } from './info-window';
 import { GeoCoder } from './geo-coder';
 import { CityItem } from './city-item';
 import { CityItemService } from './city-item.service';
+import { CityItemFormComponent } from './city-item-form.component';
 
 declare var google: any;
 
 @Component({
     selector: 'city-map',
-    template: '<div id="map"></div>',
+    template: ` <div id="map"></div>
+                <city-item-form #cityItemForm="cityItemDialog"
+                [model]="current.model"></city-item-form>
+              `,
     styles: [
         '#map { height: 300px }'
     ],
     providers: [
-      CityItemService
+        CityItemService
     ]
 })
 export class CityMapComponent implements OnInit {
 
-    map : any; // google map
+    map: any; // google map
     infoWindow: InfoWindow;
     geoCoder: GeoCoder;
+    current: any = {
+      model: new CityItem()
+    };
+    @ViewChild('cityItemForm') public cityItemForm: any;
 
-    constructor(private _cityItemService : CityItemService){
-      
+
+    constructor(private _cityItemService: CityItemService,
+                private _zone : NgZone) {
+
     }
 
     ngOnInit() {
@@ -48,54 +58,67 @@ export class CityMapComponent implements OnInit {
         google.maps.event.addListener(this.map, 'dblclick', function(event: any) {
             that.infoWindow.hide();
             let cityItem = {
-              name : '',
-              latitude : event.latLng.lat(),
-              longitude : event.latLng.lng()
+                name: '',
+                latitude: event.latLng.lat(),
+                longitude: event.latLng.lng()
             };
-            that.placeMarker(cityItem);
+            let marker = that.placeMarker(cityItem);
+            that._zone.run(() => {
+              that.current.model = marker.cityItem;
+              that.cityItemForm.showChildModal();
+            });
         });
 
         this._cityItemService.findAll()
-        .subscribe(r => {
-          console.log(r);
-        })
+            .then(data => {
+              for(let cityItem of data){
+                that.placeMarker(cityItem);
+              }
+            })
     }
 
-    placeMarker(cityItem : CityItem){
-      let that = this;
-      let marker = new google.maps.Marker({
-          position: new google.maps.LatLng(
-              cityItem.latitude,
-              cityItem.longitude
-          ),
-          draggable: true,
-          map: that.map,
-          animation: google.maps.Animation.DROP,
-          timeout: 100,
-          //icon: app.iconByTypeId[buildingView.model.get('type').id]
-      });
-      marker.cityItem = cityItem;
-      cityItem.marker = marker;
+    placeMarker(cityItem: CityItem) {
+        let that = this;
+        let marker = new google.maps.Marker({
+            position: new google.maps.LatLng(
+                cityItem.latitude,
+                cityItem.longitude
+            ),
+            draggable: true,
+            map: that.map,
+            animation: google.maps.Animation.DROP,
+            timeout: 100,
+            //icon: app.iconByTypeId[buildingView.model.get('type').id]
+        });
+        marker.cityItem = cityItem;
+        cityItem.marker = marker;
 
-      google.maps.event.addListener(marker, 'click', () => {
-          that.infoWindow.show(marker);
-      });
-      google.maps.event.addListener(marker, 'dblclick', () => {
-          //buildingView.edit();
-      });
-      google.maps.event.addListener(marker, 'dragstart', () => {
-          that.infoWindow.hide();
-          marker.animation = google.maps.Animation.BOUNCE;
-      });
-      google.maps.event.addListener(marker, 'dragend', () => {
-          marker.setAnimation(null);
-          that.geoCoder.geocode(marker)
-          .then((r) => {
-            console.log(r);
-            console.log(marker.cityItem);
-          });
-          that.infoWindow.show(marker);
-      });
+        google.maps.event.addListener(marker, 'click', () => {
+            that.infoWindow.show(marker);
+        });
+        google.maps.event.addListener(marker, 'dblclick', () => {
+            that._zone.run(() => {
+              that.infoWindow.hide();
+              that.current.model = marker.cityItem;
+              that.cityItemForm.showChildModal();
+            });
+        });
+        google.maps.event.addListener(marker, 'dragstart', () => {
+            that.infoWindow.hide();
+            marker.animation = google.maps.Animation.BOUNCE;
+        });
+        google.maps.event.addListener(marker, 'dragend', () => {
+            marker.setAnimation(null);
+            marker.cityItem.latitude = marker.position.lat();
+            marker.cityItem.longitude = marker.position.lng();
+
+            that.geoCoder.geocode(marker)
+                .then((r) => {
+                    console.log(r);
+                });
+            that.infoWindow.show(marker);
+        });
+        return marker;
     }
 
 }
