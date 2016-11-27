@@ -1,18 +1,7 @@
-import { Component, ViewContainerRef } from '@angular/core';
-import '../../public/css/styles.css';
-import { CityMapComponent } from './city-map.component';
+import { Component } from '@angular/core';
 
 @Component({
-    selector: 'my-app',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+  selector: 'compass-app',
+  templateUrl: './app.component.html'
 })
-export class AppComponent {
-
-    private viewContainerRef: ViewContainerRef;
-
-    constructor(viewContainerRef: ViewContainerRef) {
-        this.viewContainerRef = viewContainerRef;
-    }
-
-}
+export class AppComponent {}

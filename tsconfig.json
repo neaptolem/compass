@@ -10,19 +10,6 @@
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true
   },
-  "exclude": [
-    "node_modules",
-    "typings/main",
-    "typings/main.d.ts"
-  ],
-  "typeRoots": [
-      "node_modules/@types"
-  ],
-  "types": [
-    "core-js",
-    "node",
-    "hammerjs"
-  ],
   "compileOnSave": false,
   "buildOnSave": false
 }
