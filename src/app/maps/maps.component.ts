@@ -8,9 +8,9 @@ import { templatePath } from '../../utils';
 // }
 
 @Component({
-  selector: 'x-maps',
-  templateUrl: templatePath('screens/maps/maps.component.html')
+  selector   : 'x-maps',
+  templateUrl: './maps.component.html'
 })
-export default class MapsComponent {
+export class MapsComponent {
   // maps: Observable<Array<Object>>;
 }

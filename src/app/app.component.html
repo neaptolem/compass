@@ -1,0 +1,30 @@
+<md-sidenav-layout class="webpack-starter" [class.m2app-dark]="isDarkTheme">
+  <md-toolbar color="primary">
+    <span class="right">
+      <button md-button
+              *ngFor="let route of ROUTES_NAV" [routerLink]="[route.path]">
+        {{route.name}}
+      </button>
+    </span>
+  </md-toolbar>
+
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer></footer>
+</md-sidenav-layout>
+
+<!--<main>-->
+<!--<header>-->
+<!--<a href="#"><h1>Compass</h1></a>-->
+<!--<nav>-->
+<!--<ul>-->
+<!--<li><a routerLink="/maps">Maps</a></li>-->
+<!--<li><a routerLink="/city">City</a></li>-->
+<!--</ul>-->
+<!--</nav>-->
+<!--</header>-->
+<!--<router-outlet></router-outlet>-->
+<!--<footer></footer>-->
+<!--</main>-->
