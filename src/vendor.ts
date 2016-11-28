@@ -13,3 +13,5 @@ import 'rxjs';
 import 'zone.js';
 import 'reflect-metadata';
 import 'hammerjs';
+
+import '@angular/material';

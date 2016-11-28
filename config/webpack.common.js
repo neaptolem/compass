@@ -34,6 +34,15 @@ module.exports = {
         loader: ExtractTextPlugin.extract('style', 'css?sourceMap')
       },
       {
+        test: /\.scss$/,
+        exclude: [/\.global\.scss$/],
+        loaders: ['raw-loader', 'sass-loader']
+      },
+      {
+        test: /\.global\.scss$/,
+        loaders: ['style-loader', 'css-loader', 'sass-loader']
+      },
+      {
         test: /\.css$/,
         include: helpers.root('src', 'app'),
         loader: 'raw'
