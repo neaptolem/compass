@@ -15,32 +15,33 @@ import { MapsComponent } from './maps/maps.component';
 import mapsReducer from './maps/maps.reducer';
 
 const appRoutes: Routes = [
-  { path: '', component: IndexComponent },
-  { path: 'city', component: CityMapComponent },
+  {path: '', component: IndexComponent},
+  {path: 'city', component: CityMapComponent},
   // { path: 'map/:id', component: MapComponent },
-  { path: 'maps', component: MapsComponent },
+  {path: 'maps', component: MapsComponent},
   // { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        StoreModule.provideStore({
-          maps: mapsReducer
-        }),
-        HttpModule,
-        FormsModule,
-        ModalModule,
-        RouterModule.forRoot(appRoutes)
-    ],
-    declarations: [
-        AppComponent,
-        CityMapComponent,
-        CityItemFormComponent,
-        IndexComponent,
-        MapsComponent
-        // PageNotFoundComponent
-    ],
-    bootstrap: [ AppComponent ]
+  imports     : [
+    BrowserModule,
+    StoreModule.provideStore({
+      maps: mapsReducer
+    }),
+    HttpModule,
+    FormsModule,
+    ModalModule,
+    RouterModule.forRoot(appRoutes)
+  ],
+  declarations: [
+    AppComponent,
+    CityMapComponent,
+    CityItemFormComponent,
+    IndexComponent,
+    MapsComponent
+    // PageNotFoundComponent
+  ],
+  bootstrap   : [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

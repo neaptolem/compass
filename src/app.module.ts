@@ -5,32 +5,27 @@ import { MaterialModule } from '@angular/material';
 import { StoreModule } from '@ngrx/store';
 
 import AppComponent from './screens/app/app.component';
+import { Routes } from './app.routes'
 import IndexComponent from './screens/index/index.component';
 import MapsComponent from './screens/maps/maps.component';
 
 import mapsReducer from './screens/maps/maps.reducer';
 
 @NgModule({
-  imports: [
+  imports     : [
     BrowserModule,
     MaterialModule.forRoot(),
     StoreModule.provideStore({
       maps: mapsReducer
     }),
-    RouterModule.forRoot([{
-      path: '',
-      component: IndexComponent
-    },
-    {
-      path: 'maps',
-      component: MapsComponent
-    }])
+    RouterModule.forRoot(Routes)
   ],
   declarations: [
     AppComponent,
     MapsComponent,
     IndexComponent
   ],
-  bootstrap: [AppComponent]
+  bootstrap   : [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}

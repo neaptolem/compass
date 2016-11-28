@@ -8,7 +8,7 @@ import { templatePath } from '../../utils';
 // }
 
 @Component({
-  selector: 'x-maps',
+  selector   : 'x-maps',
   templateUrl: templatePath('screens/maps/maps.component.html')
 })
 export default class MapsComponent {
