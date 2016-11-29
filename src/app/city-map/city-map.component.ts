@@ -1,9 +1,9 @@
 import { Component, OnInit, NgZone, ViewChild } from '@angular/core';
 import { InfoWindow } from './info-window';
 import { GeoCoder } from './geo-coder';
-import { CityItem } from './city-item';
-import { CityItemService } from './city-item.service';
-import { CityItemFormComponent } from './city-item-form.component';
+import { CityItem } from '../city-item/city-item';
+import { CityItemService } from '../city-item/city-item.service';
+import { CityItemFormComponent } from '../city-item/city-item-form.component';
 
 declare var google: any;
 
@@ -58,7 +58,7 @@ export class CityMapComponent implements OnInit {
     });
     google.maps.event.addListener(this.map, 'dblclick', function (event: any) {
       that.infoWindow.hide();
-      let cityItem = {
+      let cityItem : any = {
         name     : '',
         latitude : event.latLng.lat(),
         longitude: event.latLng.lng()

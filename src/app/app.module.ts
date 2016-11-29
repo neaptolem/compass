@@ -7,11 +7,12 @@ import { StoreModule } from '@ngrx/store';
 import { MaterialModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
-import { CityItemFormComponent } from './city-map/city-item-form.component';
+import { CityItemFormComponent } from './city-item/city-item-form.component';
 import { ModalModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { CityMapComponent } from './city-map/city-map.component';
 import { IndexComponent } from './index/index.component';
 import { MapsComponent } from './maps/maps.component';
+import { LoginComponent } from './login/login.component';
 import { ROUTES } from './app.routes';
 
 import mapsReducer from './maps/maps.reducer';
@@ -33,6 +34,7 @@ import mapsReducer from './maps/maps.reducer';
     CityMapComponent,
     CityItemFormComponent,
     IndexComponent,
+    LoginComponent,
     MapsComponent
     // PageNotFoundComponent
   ],
