@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { CityItem } from './city-item';
-import { config } from '../shared/config';
+import { config } from '../config';
 
 @Injectable()
 export class CityItemService {
@@ -36,5 +36,4 @@ export class CityItemService {
     return this._http.delete(config.endpoint + this.prefix + '/' + cityItem.id)
       .toPromise();
   }
-
 }

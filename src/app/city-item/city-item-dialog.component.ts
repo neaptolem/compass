@@ -1,32 +1,22 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { CityItem } from './city-item';
-import { ModalDirective } from 'ng2-bootstrap/ng2-bootstrap';
 import { CityItemService } from './city-item.service';
 import { Response } from '@angular/http';
 
 @Component({
-  selector   : 'city-item-form',
-  templateUrl: './city-item-form.component.html',
-  exportAs   : 'cityItemDialog'
+  selector   : 'city-item-dialog',
+  templateUrl: './city-item-dialog.component.html'
 })
-export class CityItemFormComponent {
+export class CityItemDialogComponent {
 
-  @ViewChild('childModal') public childModal: ModalDirective;
+  placeholder = 'Name';
 
   @Input()
-  model: CityItem;
+  model : CityItem;
 
-  constructor(private _cityItemService: CityItemService) {
+  deleted : any;
 
-  }
-
-  public showChildModal(): void {
-    this.childModal.show();
-  }
-
-  public hideModal(): void {
-    this.childModal.hide();
-  }
+  constructor(private _cityItemService : CityItemService) { }
 
   save() {
     let p: Promise<Response>;
@@ -41,15 +31,17 @@ export class CityItemFormComponent {
     }
     p.then(() => {
       this.model.marker = marker;
-      this.hideModal();
     });
   }
 
   delete() {
-    this._cityItemService.delete(this.model).then(() => {
+    if (this.model.id){
+      this._cityItemService.delete(this.model).then(() => {
+        this.model.marker.setMap(null);
+      });
+    } else {
       this.model.marker.setMap(null);
-      this.hideModal();
-    });
+    }
   }
 
 }

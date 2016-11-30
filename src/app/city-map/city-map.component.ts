@@ -1,17 +1,17 @@
 import { Component, OnInit, NgZone, ViewChild } from '@angular/core';
 import { InfoWindow } from './info-window';
 import { GeoCoder } from './geo-coder';
-import { CityItem } from './city-item';
-import { CityItemService } from './city-item.service';
-import { CityItemFormComponent } from './city-item-form.component';
+import { CityItem } from '../city-item/city-item';
+import { CityItemService } from '../city-item/city-item.service';
+import { CityItemDialogComponent } from '../city-item/city-item-dialog.component';
 
 declare var google: any;
 
 @Component({
   selector : 'city-map',
   template : ` <div id="map"></div>
-                <city-item-form #cityItemForm="cityItemDialog"
-                [model]="current.model"></city-item-form>
+                <city-item-dialog [model]="current.model">
+                </city-item-dialog>
               `,
   styles   : [
     '#map { height: 500px }'
@@ -28,8 +28,6 @@ export class CityMapComponent implements OnInit {
   current: any = {
     model: new CityItem()
   };
-  @ViewChild('cityItemForm') public cityItemForm: any;
-
 
   constructor(
     private _cityItemService: CityItemService,
@@ -58,7 +56,7 @@ export class CityMapComponent implements OnInit {
     });
     google.maps.event.addListener(this.map, 'dblclick', function (event: any) {
       that.infoWindow.hide();
-      let cityItem = {
+      let cityItem : any = {
         name     : '',
         latitude : event.latLng.lat(),
         longitude: event.latLng.lng()
@@ -66,7 +64,7 @@ export class CityMapComponent implements OnInit {
       let marker = that.placeMarker(cityItem);
       that._zone.run(() => {
         that.current.model = marker.cityItem;
-        that.cityItemForm.showChildModal();
+
       });
     });
 
@@ -95,13 +93,12 @@ export class CityMapComponent implements OnInit {
     cityItem.marker = marker;
 
     google.maps.event.addListener(marker, 'click', () => {
-      that.infoWindow.show(marker);
-    });
-    google.maps.event.addListener(marker, 'dblclick', () => {
+      this.infoWindow.show(marker);
+    // });
+    // google.maps.event.addListener(marker, 'dblclick', () => {
       that._zone.run(() => {
-        that.infoWindow.hide();
         that.current.model = marker.cityItem;
-        that.cityItemForm.showChildModal();
+        this.openDialog(this.current);
       });
     });
     google.maps.event.addListener(marker, 'dragstart', () => {
@@ -120,6 +117,10 @@ export class CityMapComponent implements OnInit {
       that.infoWindow.show(marker);
     });
     return marker;
+  }
+
+  openDialog(current : any){
+    console.log(current);
   }
 
 }

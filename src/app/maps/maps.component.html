@@ -1,3 +1,6 @@
 <section>
-  <h2>Maps</h2>
+  <button md-button
+          *ngFor="let map of maps" (click)='openMap(map)'>
+      Поверх {{map.floor}}
+  </button>
 </section>
