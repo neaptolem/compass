@@ -7,11 +7,11 @@ import { StoreModule } from '@ngrx/store';
 import { MaterialModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
-import { CityItemFormComponent } from './city-item/city-item-form.component';
-import { ModalModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { CityItemDialogComponent } from './city-item/city-item-dialog.component';
 import { CityMapComponent } from './city-map/city-map.component';
 import { IndexComponent } from './index/index.component';
 import { MapsComponent } from './maps/maps.component';
+import { MapComponent } from './map/map.component';
 import { LoginComponent } from './login/login.component';
 import { ROUTES } from './app.routes';
 
@@ -25,18 +25,21 @@ import mapsReducer from './maps/maps.reducer';
     }),
     HttpModule,
     FormsModule,
-    ModalModule,
     MaterialModule.forRoot(),
     RouterModule.forRoot(ROUTES)
   ],
   declarations: [
     AppComponent,
     CityMapComponent,
-    CityItemFormComponent,
+    CityItemDialogComponent,
     IndexComponent,
     LoginComponent,
-    MapsComponent
+    MapsComponent,
+    MapComponent
     // PageNotFoundComponent
+  ],
+  entryComponents : [
+    CityItemDialogComponent
   ],
   bootstrap   : [AppComponent]
 })
