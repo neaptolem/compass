@@ -12,7 +12,8 @@
   },
   "compileOnSave": false,
   "buildOnSave": false,
-  "exclude": [
+  "definitions": [
+    "node_modules/reflect-metadata/reflect-metadata.d.ts",
     "typings/browser.d.ts",
     "typings/browser",
     "node_modules"
