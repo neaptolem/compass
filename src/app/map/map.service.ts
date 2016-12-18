@@ -1,30 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Map } from './map';
+import {Service} from "../common/service.service";
+import {config} from "../config";
 
-// TODO: mock => real service
 @Injectable()
-export class MapService {
+export class MapService extends Service<Map>{
 
-  map1 : Map = {
-    id: "1",
-    floor: 1,
-    url: 'http://maps.lnu.edu.ua/api/resources/maps/f1.svg'
-  };
+    getInstance(o: any): Map {
+        return new Map(o);
+    }
 
-  map3 = {
-    id: "3",
-    floor: 3,
-    url: 'http://maps.lnu.edu.ua/api/resources/maps/f3.svg'
-  };
+    prefix() {
+        return '/map';
+    }
 
-  findAll(){
-    return [
-      this.map1,
-      this.map3
-    ];
-  }
+    url(map: Map){
+        return config.endpoint + `/resources/maps/${map.id}.svg`;
+    }
 
-  findOne(id : string) : Map {
-    return id == '1' ? this.map1 : this.map3;
-  }
 }

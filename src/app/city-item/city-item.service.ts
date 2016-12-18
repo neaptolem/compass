@@ -1,39 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
 import { CityItem } from './city-item';
-import { config } from '../config';
+import {Service} from "../common/service.service";
 
 @Injectable()
-export class CityItemService {
+export class CityItemService extends Service<CityItem>{
 
-  prefix: string = '/cityItem';
-
-  constructor(private _http: Http) {
-
+  getInstance(o: any): CityItem {
+    return new CityItem(o);
   }
 
-  findAll() {
-    return this._http.get(config.endpoint + this.prefix)
-      .map(res => res.json())
-      .toPromise();
+  prefix(){
+    return '/cityItem';
   }
 
-  create(cityItem: CityItem): Promise<Response> {
-    return this._http.post(config.endpoint + this.prefix, cityItem)
-      .toPromise()
-      .then(res => {
-        cityItem.id = res.text();
-        return res;
-      });
-  }
-
-  update(cityItem: CityItem): Promise<Response> {
-    return this._http.put(config.endpoint + this.prefix, cityItem)
-      .toPromise();
-  }
-
-  delete(cityItem: CityItem): Promise<Response> {
-    return this._http.delete(config.endpoint + this.prefix + '/' + cityItem.id)
-      .toPromise();
-  }
 }

@@ -26,7 +26,7 @@ export class CityMapComponent implements OnInit {
   infoWindow: InfoWindow;
   geoCoder: GeoCoder;
   current: any = {
-    model: new CityItem()
+    model: new CityItem({})
   };
 
   constructor(

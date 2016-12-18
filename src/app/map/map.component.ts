@@ -24,7 +24,7 @@ export class MapComponent implements OnInit, OnDestroy {
     private sub: any;
     private mapItemRadius = 8;
     private mapItems: any;
-    private svg : any;
+    private svg: any;
 
     constructor(private _http: Http, private _mapService: MapService, private route: ActivatedRoute) {
 
@@ -32,14 +32,19 @@ export class MapComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.sub = this.route.params.subscribe(params => {
-            this.map = this._mapService.findOne(params['id']);
-            this.mapItems = d3.range(20).map(function () {
-                return {
-                    x: Math.round(Math.random() * 1000),
-                    y: Math.round(Math.random() * 1000)
-                };
-            });
-            this.initD3();
+            this._mapService.findOne(params['id'])
+                .then(map => {
+                    this.map = map;
+                })
+                .then(() => {
+                    this.mapItems = d3.range(20).map(function () {
+                        return {
+                            x: Math.round(Math.random() * 400),
+                            y: Math.round(Math.random() * 400)
+                        };
+                    });
+                    this.initD3();
+                })
         });
     }
 
@@ -60,7 +65,7 @@ export class MapComponent implements OnInit, OnDestroy {
             }))
             .append("g");
 
-        d3.xml(this.map.url,
+        d3.xml(this._mapService.url(this.map),
             function (error, documentFragment) {
                 if (error) {
                     console.log(error);
@@ -75,7 +80,7 @@ export class MapComponent implements OnInit, OnDestroy {
             });
     }
 
-    initMapItems(){
+    initMapItems() {
         this.svg.selectAll(".map-item")
             .data(this.mapItems)
             .enter().append("circle")

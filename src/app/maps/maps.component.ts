@@ -25,7 +25,8 @@ export class MapsComponent{
   }
 
   ngOnInit(){
-    this.maps = this._mapService.findAll();
+    this._mapService.findAll()
+        .then(maps => this.maps = maps);
   }
 
   openMap(map : Map){

@@ -14,8 +14,6 @@ export class CityItemDialogComponent {
   @Input()
   model : CityItem;
 
-  deleted : any;
-
   constructor(private _cityItemService : CityItemService) { }
 
   save() {

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {NgModule, Injector} from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { FormsModule }   from '@angular/forms';
@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { ROUTES } from './app.routes';
 
 import mapsReducer from './maps/maps.reducer';
+import {ServiceLocator} from "./service-locator.service";
 
 @NgModule({
   imports     : [
@@ -44,4 +45,7 @@ import mapsReducer from './maps/maps.reducer';
   bootstrap   : [AppComponent]
 })
 export class AppModule {
+  constructor(private injector: Injector) {
+    ServiceLocator.injector = this.injector;
+  }
 }
