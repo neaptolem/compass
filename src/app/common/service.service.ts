@@ -16,7 +16,9 @@ export abstract class Service<T extends Entity> {
 
     findAll(): Promise<T[]> {
         return this._http.get(config.endpoint + this.prefix())
-            .map(res => res.json())
+            .map(res => {
+                return res.json();
+            })
             .toPromise();
     }
 

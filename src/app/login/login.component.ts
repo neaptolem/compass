@@ -6,6 +6,7 @@ import { User } from './user';
   templateUrl: './login.component.html'
 })
 export class LoginComponent {
+
   model : User;
 
   constructor() {}
