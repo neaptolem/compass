@@ -6,6 +6,7 @@ import {Http, Response} from '@angular/http';
 import * as d3 from 'd3';
 import {debuglog} from "util";
 import {MapItem} from "../map-item/map-item";
+import {MapItemService} from "../map-item/map-item.service";
 
 @Component({
     selector: 'map',
@@ -29,26 +30,25 @@ export class MapEditComponent implements OnInit, OnDestroy {
     private mapItems: MapItem[];
     private svg: any;
 
-    constructor(private _http: Http, private _mapService: MapService, private route: ActivatedRoute) {
+    constructor(private _http: Http,
+                private _mapService: MapService,
+                private _mapItemService: MapItemService,
+                private route: ActivatedRoute) {
 
     }
 
     ngOnInit() {
         this.sub = this.route.params.subscribe(params => {
-            this._mapService.findOne(params['id'])
+            let p1 = this._mapService.findOne(params['id'])
                 .then(map => {
                     this.map = map;
                 })
-                .then(() => {
-                    this.mapItems = d3.range(20).map(function () {
-                        return new MapItem({
-                            x: Math.round(Math.random() * 400),
-                            y: Math.round(Math.random() * 400),
-                            name: '123'
-                        });
-                    });
-                    this.initD3();
-                })
+
+            // let p2 = this._mapItemService;
+
+
+                    this.initMap();
+                // })
         });
     }
 
@@ -56,7 +56,7 @@ export class MapEditComponent implements OnInit, OnDestroy {
         this.sub.unsubscribe();
     }
 
-    initD3() {
+    initMap() {
         let that = this;
         this.svg = d3.select("#map")
             .append("svg")
@@ -101,6 +101,7 @@ export class MapEditComponent implements OnInit, OnDestroy {
             })
             .attr("r", this.mapItemRadius)
             .style("fill", 'orange')
+            .style("cursor", "move")
             .call(d3.drag()
                 .on("start", function () {
                     d3.select(this).raise().classed("active", true);
