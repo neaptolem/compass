@@ -5,7 +5,9 @@ export class CityItem extends Entity {
     longitude: number;
     latitude: number;
     placeId?: string;
-    marker?: any; // google marker
+    marker?: any;
+    kind: any;
+    // google marker
 
     constructor(options: any) {
         super(options);
@@ -14,6 +16,7 @@ export class CityItem extends Entity {
         this.latitude = options.latitude;
         this.placeId = options.placeId;
         this.marker = options.marker;
+        this.kind = options.kind;
     }
 
 }

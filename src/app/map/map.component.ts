@@ -50,9 +50,9 @@ export class MapComponent implements OnInit, OnDestroy {
     save(): void {
         let p: Promise<Response>;
         if (this.map.id) {
-            p = this._mapService.create(this.map);
-        } else {
             p = this._mapService.update(this.map);
+        } else {
+            p = this._mapService.create(this.map);
         }
         p.then(() => {
             this._router.navigate([`/maps`]);
