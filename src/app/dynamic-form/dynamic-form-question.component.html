@@ -1,0 +1,20 @@
+<div [formGroup]="form">
+    <div [ngSwitch]="question.controlType">
+
+        <md-input *ngSwitchCase="'textbox'"
+               [formControlName]="question.key"
+               [id]="question.key"
+               [type]="question.type"
+               [placeholder]="question.label">
+        </md-input>
+
+        <select *ngSwitchCase="'dropdown'"
+                [formControlName]="question.key"
+                [id]="question.key">
+            <option *ngFor="let opt of question.options"
+                    [ngValue]="opt.key">{{opt.value}}
+            </option>
+        </select>
+
+    </div>
+</div>

@@ -1,7 +1,7 @@
 import {NgModule, Injector} from '@angular/core';
 import {BrowserModule}  from '@angular/platform-browser';
 import {HttpModule} from '@angular/http';
-import {FormsModule}   from '@angular/forms';
+import {FormsModule, ReactiveFormsModule}   from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
 import {StoreModule} from '@ngrx/store';
 import {MaterialModule} from '@angular/material';
@@ -19,6 +19,9 @@ import mapsReducer from './maps/maps.reducer';
 import {ServiceLocator} from "./service-locator.service";
 import {MapComponent} from "./map/map.component";
 import {MapItemComponent} from "./map-item/map-item.component";
+import { DynamicFormComponent }         from './dynamic-form/dynamic-form.component';
+import { DynamicFormQuestionComponent } from './dynamic-form/dynamic-form-question.component';
+
 
 @NgModule({
     imports: [
@@ -29,7 +32,8 @@ import {MapItemComponent} from "./map-item/map-item.component";
         HttpModule,
         FormsModule,
         MaterialModule.forRoot(),
-        RouterModule.forRoot(ROUTES)
+        RouterModule.forRoot(ROUTES),
+        ReactiveFormsModule
     ],
     declarations: [
         AppComponent,
@@ -40,7 +44,9 @@ import {MapItemComponent} from "./map-item/map-item.component";
         MapsComponent,
         MapComponent,
         MapEditComponent,
-        MapItemComponent
+        MapItemComponent,
+        DynamicFormComponent,
+        DynamicFormQuestionComponent
         // PageNotFoundComponent
     ],
     entryComponents: [
