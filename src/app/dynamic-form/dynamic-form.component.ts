@@ -13,7 +13,8 @@ export class DynamicFormComponent implements OnInit {
         this.form = this.qcs.toFormGroup(this.questions);
     }
 
-    @Input() questions: QuestionBase<any>[] = [];
+    @Input() questions: QuestionBase[] = [];
+    @Input() title: string;
     form: FormGroup;
     payLoad = '';
 

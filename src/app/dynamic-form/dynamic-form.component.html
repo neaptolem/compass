@@ -1,12 +1,18 @@
 <div>
     <form (ngSubmit)="onSubmit()" [formGroup]="form">
         <md-card>
-            <div *ngFor="let question of questions" class="form-row">
-                <df-question [question]="question" [form]="form"></df-question>
+            <h3> {{title}} </h3>
+            <div *ngFor="let question of questions"
+                 class="form-row">
+                <df-question
+                        [question]="question"
+                        [form]="form">
+                </df-question>
             </div>
-            <div class="form-row">
-                <button type="submit" [disabled]="!form.valid">Save</button>
-            </div>
+            <button md-raised-button
+                    color="primary"
+                    type="submit"
+                    [disabled]="!form.valid">Save</button>
         </md-card>
     </form>
     <div *ngIf="payLoad" class="form-row">

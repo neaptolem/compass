@@ -2,10 +2,11 @@
     <div [ngSwitch]="question.controlType">
 
         <md-input *ngSwitchCase="'textbox'"
-               [formControlName]="question.key"
-               [id]="question.key"
-               [type]="question.type"
-               [placeholder]="question.label">
+                  [required]="question.required ? 'required' : null"
+                  [formControlName]="question.key"
+                  [id]="question.key"
+                  [type]="question.type"
+                  [placeholder]="question.label">
         </md-input>
 
         <select *ngSwitchCase="'dropdown'"

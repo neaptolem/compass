@@ -9,13 +9,14 @@ export class QuestionControlService {
     constructor() {
     }
 
-    toFormGroup(questions: QuestionBase<any>[]) {
+    toFormGroup(questions: QuestionBase[]) {
         let group: any = {};
         questions.forEach(question => {
             group[question.key] = question.required
-                ? new FormControl(question.value || '', Validators.required)
-                : new FormControl(question.value || '');
+                ? new FormControl('', Validators.required)
+                : new FormControl('');
         });
+        console.log(group);
         return new FormGroup(group);
     }
 }

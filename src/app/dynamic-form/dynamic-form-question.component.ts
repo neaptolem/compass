@@ -7,7 +7,7 @@ import {QuestionBase}     from './question/question-base';
 })
 export class DynamicFormQuestionComponent {
 
-    @Input() question: QuestionBase<any>;
+    @Input() question: QuestionBase;
     @Input() form: FormGroup;
 
     get isValid() {
