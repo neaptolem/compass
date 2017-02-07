@@ -3,7 +3,6 @@ import {InfoWindow} from './info-window';
 import {GeoCoder} from './geo-coder';
 import {CityItem} from '../city-item/city-item';
 import {CityItemService} from '../city-item/city-item.service';
-import {CityItemDialogComponent} from '../city-item/city-item-dialog.component';
 import {IconsService} from "../city-item/icons.service";
 import {config} from "../config";
 
@@ -11,9 +10,13 @@ declare var google: any;
 
 @Component({
     selector: 'city-map',
-    template: ` <div id="map"></div>
-                <city-item-dialog [model]="current.model">
-                </city-item-dialog>
+    template: ` <div [hidden]="showForm" id="map"></div>
+                <dynamic-form #childComponent
+                   [hidden]="!showForm"
+                   [title]="'test test'"
+                   [questions]="questions">
+                </dynamic-form>
+                
               `,
     styles: [
         '#map { height: 500px }'
@@ -24,12 +27,14 @@ declare var google: any;
 })
 export class CityMapComponent implements OnInit {
 
+    showForm: boolean = !true;
     map: any; // google map
     infoWindow: InfoWindow;
     geoCoder: GeoCoder;
     current: any = {
         model: new CityItem({})
     };
+    questions : any[] = [];
 
     icons: any;
     iconUrls: any;
@@ -37,7 +42,6 @@ export class CityMapComponent implements OnInit {
     constructor(private _cityItemService: CityItemService,
                 private _zone: NgZone,
                 private _iconsService: IconsService) {
-
     }
 
     ngOnInit() {
@@ -101,7 +105,7 @@ export class CityMapComponent implements OnInit {
             draggable: true,
             map: that.map,
             timeout: 100,
-            icon: config.host + this.iconUrls[this.icons[cityItem.kind]].hdpi
+            icon: config.endpoint + this.iconUrls[this.icons[cityItem.kind]].hdpi
         });
         marker.cityItem = cityItem;
         cityItem.marker = marker;

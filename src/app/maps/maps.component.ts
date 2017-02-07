@@ -13,7 +13,8 @@ export class MapsComponent {
 
     maps: Map[];
 
-    constructor(private _mapService: MapService, private _router: Router) {
+    constructor(private _mapService: MapService,
+                private _router: Router) {
 
     }
 

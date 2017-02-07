@@ -24,8 +24,7 @@ export const ROUTES: Routes = [
 
 export const ROUTES_NAV = [
   {name: 'Home', path: '/'},
-  {name: 'Login', path: '/login'},
   //TODO:  {name: '404', path: '/detail'},
-  {name: 'City', path: '/city'},
+  {name: 'City', path: '/city', useAsDefault:true},
   {name: 'Maps', path: '/maps'}
 ];

@@ -22,7 +22,6 @@ import {MapItemComponent} from "./map-item/map-item.component";
 import { DynamicFormComponent }         from './dynamic-form/dynamic-form.component';
 import { DynamicFormQuestionComponent } from './dynamic-form/dynamic-form-question.component';
 
-
 @NgModule({
     imports: [
         BrowserModule,
@@ -52,7 +51,8 @@ import { DynamicFormQuestionComponent } from './dynamic-form/dynamic-form-questi
     entryComponents: [
         CityItemDialogComponent
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    providers: []
 })
 export class AppModule {
     constructor(private injector: Injector) {
