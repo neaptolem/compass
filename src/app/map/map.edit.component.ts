@@ -7,6 +7,7 @@ import * as d3 from 'd3';
 import {debuglog} from "util";
 import {MapItem} from "../map-item/map-item";
 import {MapItemService} from "../map-item/map-item.service";
+import {config} from "../config";
 
 @Component({
     selector: 'map',
@@ -15,7 +16,7 @@ import {MapItemService} from "../map-item/map-item.service";
         <div id="map" style="height: 500px; border: 1px solid black"></div>
         <map-item [mapItem]="currentItem"></map-item>
       `,
-    providers: [MapService]
+    providers: [MapService, MapItemService]
 })
 export class MapEditComponent implements OnInit, OnDestroy {
 
@@ -42,13 +43,9 @@ export class MapEditComponent implements OnInit, OnDestroy {
             let p1 = this._mapService.findOne(params['id'])
                 .then(map => {
                     this.map = map;
-                })
-
-            // let p2 = this._mapItemService;
-
-
                     this.initMap();
-                // })
+                });
+
         });
     }
 
@@ -69,7 +66,7 @@ export class MapEditComponent implements OnInit, OnDestroy {
             }))
             .append("g");
 
-        d3.xml(this._mapService.url(this.map),
+        d3.xml(config.endpoint + this.map.image.url,
             function (error, documentFragment) {
                 if (error) {
                     console.log(error);
@@ -85,6 +82,7 @@ export class MapEditComponent implements OnInit, OnDestroy {
     }
 
     initMapItems() {
+        this.mapItems=[];
         let that = this;
         this.svg.selectAll(".map-item")
             .data(this.mapItems)

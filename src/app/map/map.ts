@@ -3,14 +3,14 @@ export class Map {
 
   id?: string;
   floor: number;
-  url?: string;
-  cityItem: Entity;
+  image?: any;
+  owner: Entity;
 
   constructor(options: any){
     this.id = options.id;
     this.floor = options.floor;
-    this.url = options.url;
-    this.cityItem = new Entity(options.cityItem);
+    this.image = options.image;
+    this.owner = new Entity(options.owner);
   }
 
 }

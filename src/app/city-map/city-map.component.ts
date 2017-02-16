@@ -45,13 +45,7 @@ export class CityMapComponent implements OnInit {
     }
 
     ngOnInit() {
-        this._iconsService.map().then(icons => {
-            this.icons = icons;
-        }).then(() => {
-            return this._iconsService.androidIcons().then((iconUrls: any) => {
-                this.iconUrls = iconUrls;
-            });
-        }).then(() => {
+        Promise.resolve().then(() => {
             let that = this;
             let lviv = {
                 lat: 49.840,
@@ -104,9 +98,9 @@ export class CityMapComponent implements OnInit {
             ),
             draggable: true,
             map: that.map,
-            timeout: 100,
-            icon: config.endpoint + this.iconUrls[this.icons[cityItem.kind]].hdpi
+            timeout: 100
         });
+            // icon: config.endpoint + this.iconUrls[this.icons[cityItem.kind]].hdpi
         marker.cityItem = cityItem;
         cityItem.marker = marker;
 

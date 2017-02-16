@@ -33,8 +33,8 @@ export class MapComponent implements OnInit, OnDestroy {
                             .then(map => {
                                 this.map = map;
                                 this.cityItems.forEach((ci: CityItem) => {
-                                    if (ci.id === map.cityItem.id) {
-                                        this.map.cityItem = ci;
+                                    if (ci.id === map.owner.id) {
+                                        this.map.owner = ci;
                                     }
                                 })
                             });

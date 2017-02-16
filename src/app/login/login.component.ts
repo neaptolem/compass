@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from './user';
+import {AuthService} from "../_guards/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector   : 'login',
@@ -7,12 +9,17 @@ import { User } from './user';
 })
 export class LoginComponent {
 
-  model : User;
+  model : User = {};
 
-  constructor() {}
+  constructor(private authService : AuthService,
+                private router : Router) {}
 
-  onSubmit() {
-    debugger
+  onSubmit(e : any) {
+
+    this.authService.login(this.model)
+        .then(() => {
+           this.router.navigate(['/city']);
+        });
   }
 
   ngOnInit() {

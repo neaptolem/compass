@@ -5,7 +5,7 @@ import {ServiceLocator} from "../service-locator.service";
 
 export abstract class Service<T extends Entity> {
 
-    private _http : Http;
+    protected _http : Http;
 
     abstract prefix(): string;
     abstract getInstance(o: any): T;

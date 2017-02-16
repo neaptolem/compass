@@ -1,24 +1,32 @@
-<md-card>
-    <form (ngSubmit)="onSubmit($event)"
-          autocomplete="on"
-          #heroForm="ngForm">
+<div class="container"
+     fxLayout="row"
+     fxLayout.xs="column"
+     fxLayoutAlign="center center"
+     fxLayoutGap="10px"
+     fxLayoutGap.xs="0">
+    <div class="item" fxFlex="240px">
 
-        <div class="md-block">
-            <md-input
-                    name="username"
-                    placeholder="username"
-                    required
-                    autofocus></md-input>
-        </div>
+        <md-card>
+            <div class="md-block">
+                <md-input
+                        [(ngModel)]="model.username"
+                        placeholder="username"
+                        required
+                        autofocus></md-input>
+            </div>
 
-        <div class="md-block">
-            <md-input
-                    name="password"
-                    placeholder="password"
-                    type="password"
-                    required></md-input>
-        </div>
-        <button md-raised-button color="primary">Login</button>
+            <div class="md-block">
+                <md-input
+                        [(ngModel)]="model.password"
+                        placeholder="password"
+                        type="password"
+                        required></md-input>
+            </div>
+            <button md-raised-button color="primary"
+                    (click)="onSubmit()">Login
+            </button>
 
-    </form>
-</md-card>
+        </md-card>
+
+    </div>
+</div>

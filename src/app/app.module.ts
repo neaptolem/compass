@@ -5,6 +5,7 @@ import {FormsModule, ReactiveFormsModule}   from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
 import {StoreModule} from '@ngrx/store';
 import {MaterialModule} from '@angular/material';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 import {AppComponent} from './app.component';
 import {CityItemDialogComponent} from './city-item/city-item-dialog.component';
@@ -21,6 +22,8 @@ import {MapComponent} from "./map/map.component";
 import {MapItemComponent} from "./map-item/map-item.component";
 import { DynamicFormComponent }         from './dynamic-form/dynamic-form.component';
 import { DynamicFormQuestionComponent } from './dynamic-form/dynamic-form-question.component';
+import {AuthGuard} from "./_guards/auth-guard.service";
+import {AuthService} from "./_guards/auth.service";
 
 @NgModule({
     imports: [
@@ -32,7 +35,8 @@ import { DynamicFormQuestionComponent } from './dynamic-form/dynamic-form-questi
         FormsModule,
         MaterialModule.forRoot(),
         RouterModule.forRoot(ROUTES),
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        FlexLayoutModule.forRoot()
     ],
     declarations: [
         AppComponent,
@@ -52,7 +56,7 @@ import { DynamicFormQuestionComponent } from './dynamic-form/dynamic-form-questi
         CityItemDialogComponent
     ],
     bootstrap: [AppComponent],
-    providers: []
+    providers: [AuthGuard, AuthService]
 })
 export class AppModule {
     constructor(private injector: Injector) {
