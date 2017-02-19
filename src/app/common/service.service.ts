@@ -1,6 +1,6 @@
 import { config } from '../config';
 import {Http, Response} from "@angular/http";
-import {Entity} from './entity';
+import {Entity} from './model/entity';
 import {ServiceLocator} from "../service-locator.service";
 
 export abstract class Service<T extends Entity> {

@@ -1,4 +1,4 @@
-import {Entity} from "../common/entity";
+import {Entity} from "../common/model/entity";
 export class MapItem {
 
     id?: string;
