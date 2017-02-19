@@ -14,7 +14,6 @@ export class DynamicFormComponent implements OnInit {
 
     ngOnInit(): void {
         this.questions = this.qs.toQuestion(this.service.getFields());
-        console.log(this.questions);
         this.form = this.qcs.toFormGroup(this.questions);
     }
 

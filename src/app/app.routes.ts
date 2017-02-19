@@ -5,7 +5,6 @@ import {MapsComponent} from './maps/maps.component';
 import {MapEditComponent} from './map/map.edit.component';
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './_guards/auth-guard.service';
-import {MapComponent} from "./map/map.component";
 
 export const ROUTES: Routes = [
     {path: '', component: IndexComponent},
@@ -14,8 +13,6 @@ export const ROUTES: Routes = [
         path: 'city', component: CityMapComponent, canActivate: [AuthGuard]
     },
     {path: 'map/edit/:id', component: MapEditComponent},
-    {path: 'map/create', component: MapComponent},
-    {path: 'map/update/:id', component: MapComponent},
     {path: 'maps', component: MapsComponent, canActivate: [AuthGuard]}
 ];
 

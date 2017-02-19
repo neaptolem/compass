@@ -26,7 +26,8 @@ export class ItemKindService extends Service<ItemKind> {
       "primitiveEntityType": "STRING"
     },
     "fieldName": "name",
-    "label": "Name"
+    "label": "Name",
+    "order": 1
   },
   {
     "id": 20,
@@ -38,7 +39,8 @@ export class ItemKindService extends Service<ItemKind> {
       "primitiveEntityType": null
     },
     "fieldName": "iosIcon",
-    "label": "Ios Icon"
+    "label": "Ios Icon",
+    "order": 2
   },
   {
     "id": 21,
@@ -50,7 +52,8 @@ export class ItemKindService extends Service<ItemKind> {
       "primitiveEntityType": null
     },
     "fieldName": "androidIcon",
-    "label": "Android Icon"
+    "label": "Android Icon",
+    "order": 3
   }
 ];
     }

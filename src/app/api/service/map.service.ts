@@ -26,7 +26,8 @@ export class MapService extends Service<Map> {
       "primitiveEntityType": "URL_RESOURCE"
     },
     "fieldName": "image",
-    "label": "Image"
+    "label": "Image",
+    "order": 1
   },
   {
     "id": 23,
@@ -38,7 +39,8 @@ export class MapService extends Service<Map> {
       "primitiveEntityType": "INTEGER"
     },
     "fieldName": "floor",
-    "label": "Floor"
+    "label": "Floor",
+    "order": 2
   },
   {
     "id": 29,
@@ -50,7 +52,8 @@ export class MapService extends Service<Map> {
       "primitiveEntityType": null
     },
     "fieldName": "owner",
-    "label": "Owner"
+    "label": "Owner",
+    "order": 3
   }
 ];
     }

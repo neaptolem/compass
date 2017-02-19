@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 
-import {MapService} from '../map/map.service';
-import {Map} from '../map/map';
+import {MapService} from '../api/service/map.service';
+import {Map} from '../api/model/map';
 
 @Component({
     selector: 'x-map',
@@ -13,14 +13,17 @@ export class MapsComponent {
 
     maps: Map[];
 
-    constructor(private _mapService: MapService,
+    @ViewChild('mapForm') mapForm : any;
+    private showForm : boolean = false;
+
+    constructor(private mapService: MapService,
                 private _router: Router) {
 
     }
 
     ngOnInit() {
-        this._mapService.findAll()
-            .then(maps => {
+        this.mapService.findAll()
+            .then((maps : Map[]) => {
                 this.maps = maps;
             });
     }
@@ -30,11 +33,12 @@ export class MapsComponent {
     }
 
     update(map: Map){
-        this._router.navigate([`/map/update/${map.id}`]);
+        this.showForm = true;
+        this.mapForm.render(map);
     }
 
     delete(map: Map, index: number) {
-        this._mapService.delete(map)
+        this.mapService.delete(map)
             .then(() => {
                 this.maps.splice(index, 1);
             })

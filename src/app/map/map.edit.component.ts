@@ -1,22 +1,20 @@
 import {Component, Input, OnInit, OnDestroy} from '@angular/core';
-import {MapService} from '../map/map.service';
-import {Map} from  './map';
+import {MapService} from '../api/service/map.service';
+import {Map} from  '../api/model/map';
 import {Routes, ActivatedRoute} from '@angular/router';
 import {Http, Response} from '@angular/http';
 import * as d3 from 'd3';
-import {debuglog} from "util";
-import {MapItem} from "../map-item/map-item";
-import {MapItemService} from "../map-item/map-item.service";
+// import {MapItem} from "../api/model/map-item";
+// import {MapItemService} from "../api/service/map-item.service";
 import {config} from "../config";
 
 @Component({
     selector: 'map',
     template: `Map: #
         {{map?.id}}  {{status}}
-        <div id="map" style="height: 500px; border: 1px solid black"></div>
-        <map-item [mapItem]="currentItem"></map-item>
+        <div id="map" style="height: calc(100vh - 110px); border: 1px solid black"></div>
       `,
-    providers: [MapService, MapItemService]
+    providers: [MapService]
 })
 export class MapEditComponent implements OnInit, OnDestroy {
 
@@ -24,16 +22,16 @@ export class MapEditComponent implements OnInit, OnDestroy {
     map: Map;
 
     status: string = "Loading ...";
-    currentItem : MapItem = new MapItem({});
+    // currentItem : MapItem = new MapItem({});
 
     private sub: any;
     private mapItemRadius = 8;
-    private mapItems: MapItem[];
+    private mapItems: any[];
     private svg: any;
 
     constructor(private _http: Http,
                 private _mapService: MapService,
-                private _mapItemService: MapItemService,
+                // private _mapItemService: MapItemService,
                 private route: ActivatedRoute) {
 
     }
@@ -88,7 +86,7 @@ export class MapEditComponent implements OnInit, OnDestroy {
             .data(this.mapItems)
             .enter().append("circle")
             .on("click", function (i : any) {
-                that.currentItem = i;
+                // that.currentItem = i;
             })
             .attr("class", "map-item")
             .attr("cx", function (d: any) {

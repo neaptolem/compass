@@ -26,7 +26,8 @@ export class RootService extends Service<Root> {
       "primitiveEntityType": null
     },
     "fieldName": "cityItems",
-    "label": "City Items"
+    "label": "City Items",
+    "order": 1
   }
 ];
     }

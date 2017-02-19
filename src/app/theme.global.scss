@@ -9,7 +9,7 @@ $theme: md-light-theme($primary, $accent);
 
 @include angular-material-theme($theme);
 main {
-  min-height: calc(100vh - 3em);
+  min-height: calc(100vh - 84px);
 }
 // This is where you define your custom them
 

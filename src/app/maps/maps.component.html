@@ -1,4 +1,4 @@
-<section>
+<section [hidden]="showForm">
     <md-toolbar>
         <span flex> </span>
         <button md-raised-button color="accent"
@@ -22,5 +22,6 @@
         <!--</button>-->
 
     </div>
-
 </section>
+
+<dynamic-form #mapForm [service]="mapService" [hidden]="!showForm"></dynamic-form>

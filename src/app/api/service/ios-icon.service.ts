@@ -26,7 +26,8 @@ export class IosIconService extends Service<IosIcon> {
       "primitiveEntityType": "URL_RESOURCE"
     },
     "fieldName": "size2x",
-    "label": "Size 2x"
+    "label": "Size 2x",
+    "order": 1
   },
   {
     "id": 13,
@@ -38,7 +39,8 @@ export class IosIconService extends Service<IosIcon> {
       "primitiveEntityType": "URL_RESOURCE"
     },
     "fieldName": "size3x",
-    "label": "Size 3x"
+    "label": "Size 3x",
+    "order": 2
   }
 ];
     }

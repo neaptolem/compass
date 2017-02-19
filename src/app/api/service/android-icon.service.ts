@@ -26,7 +26,8 @@ export class AndroidIconService extends Service<AndroidIcon> {
       "primitiveEntityType": "URL_RESOURCE"
     },
     "fieldName": "xxxhdpi",
-    "label": "Xxxhdpi"
+    "label": "Xxxhdpi",
+    "order": 1
   },
   {
     "id": 15,
@@ -38,7 +39,8 @@ export class AndroidIconService extends Service<AndroidIcon> {
       "primitiveEntityType": "URL_RESOURCE"
     },
     "fieldName": "xxhdpi",
-    "label": "Xxhdpi"
+    "label": "Xxhdpi",
+    "order": 2
   },
   {
     "id": 16,
@@ -50,7 +52,8 @@ export class AndroidIconService extends Service<AndroidIcon> {
       "primitiveEntityType": "URL_RESOURCE"
     },
     "fieldName": "xhdpi",
-    "label": "Xhdpi"
+    "label": "Xhdpi",
+    "order": 3
   },
   {
     "id": 17,
@@ -62,7 +65,8 @@ export class AndroidIconService extends Service<AndroidIcon> {
       "primitiveEntityType": "URL_RESOURCE"
     },
     "fieldName": "mdpi",
-    "label": "Mdpi"
+    "label": "Mdpi",
+    "order": 4
   },
   {
     "id": 18,
@@ -74,7 +78,8 @@ export class AndroidIconService extends Service<AndroidIcon> {
       "primitiveEntityType": "URL_RESOURCE"
     },
     "fieldName": "hdpi",
-    "label": "Hdpi"
+    "label": "Hdpi",
+    "order": 5
   }
 ];
     }

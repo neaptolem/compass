@@ -26,7 +26,8 @@ export class CityItemService extends Service<CityItem> {
       "primitiveEntityType": null
     },
     "fieldName": "owner",
-    "label": "Owner"
+    "label": "Owner",
+    "order": 1
   },
   {
     "id": 24,
@@ -38,7 +39,8 @@ export class CityItemService extends Service<CityItem> {
       "primitiveEntityType": "STRING"
     },
     "fieldName": "name",
-    "label": "Name"
+    "label": "Name",
+    "order": 2
   },
   {
     "id": 25,
@@ -50,7 +52,8 @@ export class CityItemService extends Service<CityItem> {
       "primitiveEntityType": "DOUBLE"
     },
     "fieldName": "longitude",
-    "label": "Longitude"
+    "label": "Longitude",
+    "order": 3
   },
   {
     "id": 26,
@@ -62,7 +65,8 @@ export class CityItemService extends Service<CityItem> {
       "primitiveEntityType": "DOUBLE"
     },
     "fieldName": "latitude",
-    "label": "Latitude"
+    "label": "Latitude",
+    "order": 4
   },
   {
     "id": 27,
@@ -74,7 +78,8 @@ export class CityItemService extends Service<CityItem> {
       "primitiveEntityType": null
     },
     "fieldName": "maps",
-    "label": "Maps"
+    "label": "Maps",
+    "order": 5
   },
   {
     "id": 28,
@@ -86,7 +91,8 @@ export class CityItemService extends Service<CityItem> {
       "primitiveEntityType": null
     },
     "fieldName": "kind",
-    "label": "Kind"
+    "label": "Kind",
+    "order": 6
   }
 ];
     }
