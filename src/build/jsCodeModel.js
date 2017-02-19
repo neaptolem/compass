@@ -1,8 +1,9 @@
 const _ = require('underscore');
-const TypeModel = require('./typeModel');
-const ServiceModel = require('./serviceModel');
+const TypeModel = require('./type.model');
+const ServiceModel = require('./service.model');
+const ServiceFactoryModel = require('./service-factory.model');
 
-const codeWriter = require('./codeWriter');
+const codeWriter = require('./code-writer');
 
 class JsCodeModel {
 
@@ -18,6 +19,7 @@ class JsCodeModel {
                 this.models.push(service);
             }
         });
+        this.models.push(new ServiceFactoryModel(types));
     }
 
     preProcess(data) {

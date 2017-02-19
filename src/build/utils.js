@@ -15,7 +15,12 @@ var utils = {
         });
         name.push(word)
         return name.join('-');
+    },
+
+    makeFirstLetterLowerCase(input){
+        return input.substr(0, 1).toLowerCase() + input.substr(1);
     }
-}
+
+};
 
 module.exports = utils;

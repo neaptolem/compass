@@ -14,7 +14,7 @@ export class MapService extends Service<Map> {
         return '/map';
     }
     
-    getFields(){
+    getFields(): any[] {
         return [
   {
     "id": 22,

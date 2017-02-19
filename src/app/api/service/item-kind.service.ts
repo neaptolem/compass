@@ -14,7 +14,7 @@ export class ItemKindService extends Service<ItemKind> {
         return '/itemKind';
     }
     
-    getFields(){
+    getFields(): any[] {
         return [
   {
     "id": 19,

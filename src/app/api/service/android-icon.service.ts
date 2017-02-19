@@ -14,7 +14,7 @@ export class AndroidIconService extends Service<AndroidIcon> {
         return '/androidIcon';
     }
     
-    getFields(){
+    getFields(): any[] {
         return [
   {
     "id": 14,

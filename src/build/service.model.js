@@ -21,10 +21,10 @@ export class ${this.type.typeName}Service extends Service<${this.type.typeName}>
     }
 
     prefix() {
-        return '/${this.type.typeName.substr(0, 1).toLowerCase() + this.type.typeName.substr(1)}';
+        return '/${utils.makeFirstLetterLowerCase(this.type.typeName)}';
     }
     
-    getFields(){
+    getFields(): any[] {
         return ${JSON.stringify(this.type.fields, null, 2)};
     }
     

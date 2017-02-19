@@ -22,6 +22,14 @@ import { DynamicFormQuestionComponent } from './dynamic-form/dynamic-form-questi
 import {AuthGuard} from "./_guards/auth-guard.service";
 import {AuthService} from "./_guards/auth.service";
 
+import {ItemKindService} from './api/service/item-kind.service'
+import {IosIconService} from './api/service/ios-icon.service'
+import {AndroidIconService} from './api/service/android-icon.service'
+import {RootService} from './api/service/root.service'
+import {CityItemService} from './api/service/city-item.service'
+import {MapService} from './api/service/map.service'
+import {ServiceFactory} from "./api/service-factory.service";
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -47,7 +55,15 @@ import {AuthService} from "./_guards/auth.service";
         // PageNotFoundComponent
     ],
     bootstrap: [AppComponent],
-    providers: [AuthGuard, AuthService]
+    providers: [AuthGuard, AuthService,
+        ServiceFactory,
+        ItemKindService,
+        IosIconService,
+        AndroidIconService,
+        RootService,
+        CityItemService,
+        MapService
+    ]
 })
 export class AppModule {
     constructor(private injector: Injector) {

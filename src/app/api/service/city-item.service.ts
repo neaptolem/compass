@@ -14,7 +14,7 @@ export class CityItemService extends Service<CityItem> {
         return '/cityItem';
     }
     
-    getFields(){
+    getFields(): any[] {
         return [
   {
     "id": 11,

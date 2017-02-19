@@ -14,7 +14,7 @@ export class RootService extends Service<Root> {
         return '/root';
     }
     
-    getFields(){
+    getFields(): any[] {
         return [
   {
     "id": 10,

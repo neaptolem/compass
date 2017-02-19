@@ -14,7 +14,7 @@ export class IosIconService extends Service<IosIcon> {
         return '/iosIcon';
     }
     
-    getFields(){
+    getFields(): any[] {
         return [
   {
     "id": 12,

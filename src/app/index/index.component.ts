@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild}       from '@angular/core';
 import {QuestionService} from '../dynamic-form/dynamic-form.service';
 import {MapService} from '../api/service/map.service';
+import {ServiceFactory} from "../api/service-factory.service";
 
 @Component({
     selector: 'my-app',
@@ -10,8 +11,7 @@ import {MapService} from '../api/service/map.service';
         [service]="mapService">
       </dynamic-form>
     </div>
-  `,
-    providers: [MapService]
+  `
 })
 export class IndexComponent {
 
@@ -22,8 +22,9 @@ export class IndexComponent {
 
     @ViewChild('mapForm') mapForm : any;
 
-    constructor(private mapService : MapService) {
-
+    constructor(private mapService : MapService,
+                private serviceFactory: ServiceFactory) {
+        serviceFactory.getService(9).findAll().then(console.log);
     }
 
     clicked(){
