@@ -27,7 +27,7 @@ class JsCodeModel {
         });
         _.each(data, type => {
             _.each(type.fields, field => {
-                field.fieldType = map[field.fieldType.id];
+                field.fieldType = _.omit(map[field.fieldType.id], ['fields']);
             })
         });
         return data;

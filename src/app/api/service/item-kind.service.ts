@@ -14,4 +14,45 @@ export class ItemKindService extends Service<ItemKind> {
         return '/itemKind';
     }
     
+    getFields(){
+        return [
+  {
+    "id": 19,
+    "fieldKind": "REGULAR",
+    "fieldType": {
+      "id": 1,
+      "typeName": "Undefined",
+      "typeKind": "PRIMITIVE",
+      "primitiveEntityType": "STRING"
+    },
+    "fieldName": "name",
+    "label": "Name"
+  },
+  {
+    "id": 20,
+    "fieldKind": "REGULAR",
+    "fieldType": {
+      "id": 5,
+      "typeName": "IosIcon",
+      "typeKind": "ENTITY",
+      "primitiveEntityType": null
+    },
+    "fieldName": "iosIcon",
+    "label": "Ios Icon"
+  },
+  {
+    "id": 21,
+    "fieldKind": "REGULAR",
+    "fieldType": {
+      "id": 6,
+      "typeName": "AndroidIcon",
+      "typeKind": "ENTITY",
+      "primitiveEntityType": null
+    },
+    "fieldName": "androidIcon",
+    "label": "Android Icon"
+  }
+];
+    }
+    
 }

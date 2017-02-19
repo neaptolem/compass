@@ -24,6 +24,10 @@ export class ${this.type.typeName}Service extends Service<${this.type.typeName}>
         return '/${this.type.typeName.substr(0, 1).toLowerCase() + this.type.typeName.substr(1)}';
     }
     
+    getFields(){
+        return ${JSON.stringify(this.type.fields, null, 2)};
+    }
+    
 }`;
         return code;
     }

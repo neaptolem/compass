@@ -2,6 +2,7 @@ import { config } from '../config';
 import {Http, Response} from "@angular/http";
 import {Entity} from './model/entity';
 import {ServiceLocator} from "../service-locator.service";
+import {QuestionBase} from "../dynamic-form/question/question-base";
 
 export abstract class Service<T extends Entity> {
 
@@ -47,6 +48,10 @@ export abstract class Service<T extends Entity> {
     delete(entity: T): Promise<Response> {
         return this._http.delete(config.endpoint + this.prefix() + '/' + entity.id)
             .toPromise();
+    }
+
+    getFields(): any[] {
+        return [];
     }
 
 }

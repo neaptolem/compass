@@ -11,7 +11,7 @@ export class DynamicFormQuestionComponent {
     @Input() form: FormGroup;
 
     get isValid() {
-        return this.form.controls[this.question.key].valid;
+        return this.form.controls[this.question.fieldName].valid;
     }
 
 

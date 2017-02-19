@@ -22,31 +22,7 @@ export class QuestionService {
         };
     }
 
-    getQuestions() {
-        let meta: any[] = [
-            {
-                fieldKind: "COLLECTION",
-                key: 'brave',
-                label: 'Bravery Rating',
-                required: false,
-                order: 3
-            },
-            {
-                fieldKind: "REGULAR",
-                key: 'firstName',
-                label: 'First name',
-                required: true,
-                order: 1
-            },
-            {
-                fieldKind: "REGULAR",
-                key: 'emailAddress',
-                label: 'Email',
-                type: 'email',
-                required: false,
-                order: 2
-            }
-        ];
+    toQuestion(meta : any[]) {
         let questions: QuestionBase[] = [];
         meta.forEach(m => {
             let controlType = this.map2[m.fieldKind];

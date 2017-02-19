@@ -1,6 +1,6 @@
 export abstract class QuestionBase {
 
-    key: string;
+    fieldName: string;
     label: string;
     required: boolean;
     order: number;
@@ -8,13 +8,13 @@ export abstract class QuestionBase {
     controlType?: string;
 
     constructor(options: {
-        key?: string,
+        fieldName?: string,
         label?: string,
         required?: boolean,
         order?: number,
         fieldKind?: string
     } = {}) {
-        this.key = options.key || '';
+        this.fieldName = options.fieldName || '';
         this.label = options.label || '';
         this.required = !!options.required;
         this.order = options.order === undefined ? 1 : options.order;

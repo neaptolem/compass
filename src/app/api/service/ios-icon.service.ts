@@ -14,4 +14,33 @@ export class IosIconService extends Service<IosIcon> {
         return '/iosIcon';
     }
     
+    getFields(){
+        return [
+  {
+    "id": 12,
+    "fieldKind": "REGULAR",
+    "fieldType": {
+      "id": 3,
+      "typeName": "Undefined",
+      "typeKind": "PRIMITIVE",
+      "primitiveEntityType": "URL_RESOURCE"
+    },
+    "fieldName": "size2x",
+    "label": "Size 2x"
+  },
+  {
+    "id": 13,
+    "fieldKind": "REGULAR",
+    "fieldType": {
+      "id": 3,
+      "typeName": "Undefined",
+      "typeKind": "PRIMITIVE",
+      "primitiveEntityType": "URL_RESOURCE"
+    },
+    "fieldName": "size3x",
+    "label": "Size 3x"
+  }
+];
+    }
+    
 }

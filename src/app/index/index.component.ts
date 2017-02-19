@@ -1,19 +1,17 @@
 import {Component, OnInit, ViewChild}       from '@angular/core';
 import {QuestionService} from '../dynamic-form/dynamic-form.service';
-import {TextboxQuestion} from "../dynamic-form/question/question-textbox";
-import {DropdownQuestion} from "../dynamic-form/question/question-dropdown";
+import {MapService} from '../api/service/map.service';
 
 @Component({
     selector: 'my-app',
     template: `
     <div>
-      <dynamic-form #childComponent
-        [title]="'test test'"
-        [questions]="questions">
+      <dynamic-form #mapForm
+        [service]="mapService">
       </dynamic-form>
     </div>
   `,
-    providers: [QuestionService]
+    providers: [MapService]
 })
 export class IndexComponent {
 
@@ -22,14 +20,14 @@ export class IndexComponent {
         firstName: "name"
     };
 
-    @ViewChild('childComponent') child : any;
+    @ViewChild('mapForm') mapForm : any;
 
-    constructor(service: QuestionService) {
-        this.questions = service.getQuestions();
+    constructor(private mapService : MapService) {
+
     }
 
     clicked(){
-        this.child.render(this.item);
+        this.mapForm.render(this.item);
     }
 
 }

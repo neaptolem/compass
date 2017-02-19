@@ -13,8 +13,7 @@ declare var google: any;
     template: ` <div [hidden]="showForm" id="map"></div>
                 <dynamic-form #childComponent
                    [hidden]="!showForm"
-                   [title]="'test test'"
-                   [questions]="questions">
+                   [service]="_cityItemService">
                 </dynamic-form>
                 
               `,

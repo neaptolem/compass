@@ -12,11 +12,10 @@ export class QuestionControlService {
     toFormGroup(questions: QuestionBase[]) {
         let group: any = {};
         questions.forEach(question => {
-            group[question.key] = question.required
+            group[question.fieldName] = question.required
                 ? new FormControl('', Validators.required)
                 : new FormControl('');
         });
-        console.log(group);
         return new FormGroup(group);
     }
 }

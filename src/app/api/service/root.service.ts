@@ -14,4 +14,21 @@ export class RootService extends Service<Root> {
         return '/root';
     }
     
+    getFields(){
+        return [
+  {
+    "id": 10,
+    "fieldKind": "COLLECTION",
+    "fieldType": {
+      "id": 8,
+      "typeName": "CityItem",
+      "typeKind": "ENTITY",
+      "primitiveEntityType": null
+    },
+    "fieldName": "cityItems",
+    "label": "City Items"
+  }
+];
+    }
+    
 }
